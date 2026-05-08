@@ -35,6 +35,18 @@ public class SLLMain07 {
         sll.insertAt(2, mhs[1]);
         sll.print();
 
+        System.out.println("Data index 1 : ");
+        sll.getData(1);
+
+        System.out.println("Data mahasiswa an Andi berada pada index : " + sll.indexOf("Andi"));
+        System.out.println();
+
+        sll.removeFirst();
+        sll.removeLast();
+        sll.print();
+        sll.removeAt(0);
+        sll.print();
+
         sc.close();
     }
 }

@@ -77,5 +77,89 @@ public class SingleLinkedList07 {
         }
     }
 
+    public void getData(int index) {
+        Node07 temp = head;
+        for (int i = 0; i < index; i++) {
+            temp = temp.next;
+        }
+        temp.data.tampilInformasi();
+    }
+
+    public int indexOf(String key) {
+        Node07 temp = head;
+        int index = 0;
+        while (temp != null && !temp.data.nama.equalsIgnoreCase(key)) {
+            temp = temp.next;
+            index++;
+        }
+        if (temp == null) {
+            return - 1;
+        } else {
+            return index;
+        }
+    }
+
+    public void removeFirst() {
+        if (isEmpty()) {
+            System.out.println("Linked List masih kosong, tidak dapat dihapus!");
+        } else if (head == tail) {
+            head = tail = null;
+        } else {
+            head = head.next;
+        }
+    }
+
+    public void removeLast() {
+        if (isEmpty()) {
+            System.out.println("Linked List masih kosong, tidak dapat dihapus!");
+        } else if (head == tail) {
+            head = tail = null;
+        } else {
+            Node07 temp = head;
+            while (temp.next != tail) {
+                temp = temp.next;
+            }
+            temp.next = null;
+            tail = temp;
+        }
+    }
+
+    public void remove(String key) {
+        if (isEmpty()) {
+            System.out.println("Linked List masih kosong, tidak dapat dihapus!");
+        } else {
+            Node07 temp = head;
+            while (temp != null) {
+                if ((temp.data.nama.equalsIgnoreCase(key)) && (temp == head)) {
+                    this.removeFirst();
+                    break;
+                } else if (temp.data.nama.equalsIgnoreCase(key)) {
+                    temp.next = temp.next.next;
+                    if (temp.next == null) {
+                        tail = temp;
+                    }
+                    break;
+                }
+                temp = temp.next;  
+            }  
+        }
+    }
+
+    public void removeAt(int index) {
+        if (index == 0) {
+            removeFirst();
+        } else {
+            Node07 temp = head;
+            for (int i = 0; i < index - 1; i++) {
+                temp = temp.next;
+            }
+            temp.next = temp.next.next;
+            if (temp.next == null) {
+                tail = temp;
+            }
+        }
+    }
+
+
 
 }
